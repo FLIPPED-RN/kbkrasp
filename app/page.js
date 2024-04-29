@@ -27,7 +27,7 @@ export default function Home() {
 
   const fetchData = async () => {
     // Отправка запроса к API
-    const response = await fetch(`http://94.228.117.21:4200/api/search?group=${inputValue}`);
+    const response = await fetch(`https://flipped-rn-rasp-backend-55f0.twc1.net/api/search?group=${inputValue}`);
     const data = await response.json();
   
     if (response.ok) {
