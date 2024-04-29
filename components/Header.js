@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import raspLogo from '/public/rasp-logo.jpg';
 
 export default function Header() {
     return(
