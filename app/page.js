@@ -55,7 +55,6 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto mt-[100px]">
-        <ModalWindow />
         <div className="relative flex justify-between xs:gap-1 xs:w-[370px] mx-auto sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px]">
           <div>
             <input 
