@@ -27,7 +27,7 @@ export default function Home() {
 
   const fetchData = async () => {
     // Отправка запроса к API
-    const response = await fetch(`http://localhost:4200/api/search?group=${inputValue}`);
+    const response = await fetch(`http://94.228.117.21:4200/api/search?group=${inputValue}`);
     const data = await response.json();
   
     if (response.ok) {
@@ -108,7 +108,7 @@ export default function Home() {
             ))}
           </div>
         ) || (
-          <h1 className='flex justify-center items-center mt-10 border border-[#6e2fba] rounded-lg h-[40px] xs:w-[370px] sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px] mx-auto'>Начните вводить группу, и выберите из списка :)</h1>
+          <h1 className='flex justify-center items-center mt-10 border border-[#6e2fba] rounded-lg h-[40px] xs:w-[370px] xs:text-[13px] sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px] mx-auto'>Начните вводить группу и выберите из списка :)</h1>
         )}
       </main>
     </>
