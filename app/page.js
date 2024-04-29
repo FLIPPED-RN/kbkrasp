@@ -1,12 +1,14 @@
 'use client'
 
 import AdComponent from '@/components/AdComponent';
+import ModalWindow from '@/components/ModalWindow';
 import { useState } from 'react';
 
 export default function Home() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState('')
   const [groupData, setGroupData] = useState(null)
-  const [visibleSuggestions, setVisibleSuggestions] = useState(6); // Изначально отображаем первые 6 групп
+  const [isGroupSelected, setIsGroupSelected] = useState(false)
+  const [visibleSuggestions, setVisibleSuggestions] = useState(6)
   const groups = [
     "23-ПД-1/2", "23-Р-1", "23-СА-1", "23-ЦА-1", "23-ЦД-1", "23-К-2", "23-ЗМ-2", "22-БД-3", "22-ЗМ-3", "22-К-3",
     "21-ЗМ-4", "23-А-2", "23-ДС-2", "22-А-3", "22-Д-3", "21-А-4", "21-Д-4", "22-Д-4", "23-ИД-2", "23-Р-2", "23-ЦД-2", "22-ИД-3", "22-ЦД-3", "22-Р-3", "21-ИД-4", "21-Р-4", "23-ИСП-2/1", "23-ИСP-2/2", "23-СА-2", "22-ИСP-3", "22-СА-3", "21-ИСP-4", "21-СА-4", "23-ГД-2", "23-П-2", "23-ПД-2/1", "23-ПД-2/2", "23-ПД-2/3", "22-ГД-3", "22-П-3", "22-ПД-3/1", "22-ПД-3/2", "22-ПД-3/3", "21-П-4"
@@ -14,6 +16,7 @@ export default function Home() {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
+    setIsGroupSelected(false)
   };
 
   const filteredGroups = groups.filter(group =>
@@ -23,6 +26,7 @@ export default function Home() {
   const handleSelectSuggestion = (value) => {
     setInputValue(value);
     setVisibleSuggestions(0);
+    setIsGroupSelected(true)
   };
 
   const fetchData = async () => {
@@ -51,6 +55,7 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto mt-[100px]">
+        <ModalWindow />
         <div className="relative flex justify-between xs:gap-1 xs:w-[370px] mx-auto sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px]">
           <div>
             <input 
@@ -62,7 +67,7 @@ export default function Home() {
 
             {inputValue && (
               <div className="transform mt-2 xs:w-[300px] xs:text-[15px] sm:w-[430px] md:w-[580px] md:text-[18px] lg:w-[750px] xl:w-[900px]">
-                <div className="border bg-black text-white border-[#6e2fba] rounded-lg overflow-hidden">
+                <div className={` ${isGroupSelected ? '' : 'border-[#6e2fba] rounded-lg overflow-hidden border bg-black text-white'}`}>
                   {filteredGroups.map((group, index) => (
                     <div 
                       key={index} 
@@ -72,7 +77,7 @@ export default function Home() {
                       {group}
                     </div>
                   ))}
-                  {groups.length > visibleSuggestions && (
+                  {!isGroupSelected && groups.length > visibleSuggestions && (
                     <div 
                       className="px-4 py-2 cursor-pointer hover:bg-gray-800"
                       onClick={increaseVisibleSuggestions}
