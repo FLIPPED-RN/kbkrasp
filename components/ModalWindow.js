@@ -1,6 +1,5 @@
 'use client'
 
-import { Truculenta } from 'next/font/google';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
