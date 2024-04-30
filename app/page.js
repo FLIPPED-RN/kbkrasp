@@ -1,14 +1,15 @@
 'use client'
 
-import AdComponent from '@/components/AdComponent';
 import ModalWindow from '@/components/ModalWindow';
 import { useState } from 'react';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('')
   const [groupData, setGroupData] = useState(null)
-  const [isGroupSelected, setIsGroupSelected] = useState(false)
   const [visibleSuggestions, setVisibleSuggestions] = useState(6)
+  const [isGroupSelected, setIsGroupSelected] = useState(false)
+  
+
   const groups = [
     "23-ПД-1/2", "23-Р-1", "23-СА-1", "23-ЦА-1", "23-ЦД-1", "23-К-2", "23-ЗМ-2", "22-БД-3", "22-ЗМ-3", "22-К-3",
     "21-ЗМ-4", "23-А-2", "23-ДС-2", "22-А-3", "22-Д-3", "21-А-4", "21-Д-4", "22-Д-4", "23-ИД-2", "23-Р-2", "23-ЦД-2", "22-ИД-3", "22-ЦД-3", "22-Р-3", "21-ИД-4", "21-Р-4", "23-ИСП-2/1", "23-ИСP-2/2", "23-СА-2", "22-ИСP-3", "22-СА-3", "21-ИСP-4", "21-СА-4", "23-ГД-2", "23-П-2", "23-ПД-2/1", "23-ПД-2/2", "23-ПД-2/3", "22-ГД-3", "22-П-3", "22-ПД-3/1", "22-ПД-3/2", "22-ПД-3/3", "21-П-4"
@@ -55,6 +56,7 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto mt-[100px]">
+        <ModalWindow />
         <div className="relative flex justify-between xs:gap-1 xs:w-[370px] mx-auto sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px]">
           <div>
             <input 

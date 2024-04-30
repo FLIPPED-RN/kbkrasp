@@ -22,10 +22,10 @@ export default function ModalWindow() {
     }
 
     return(
-        <div className='absolute inset-0 flex items-center justify-center z-50 '>
+        <div className='absolute flex items-center justify-center z-50 inset-96'>
             {isOpenModal && (
                 <>
-                    <div className='relative p-5 shadow-2xl z-50 flex flex-col items-center border xs:w-[370px] rounded-lg border-[#6e2fba] backdrop-blur-md'>
+                    <div className=' relative p-5 shadow-2xl z-50 flex flex-col items-center border xs:w-[370px] rounded-lg border-[#6e2fba] backdrop-blur-md'>
                         <h1 className='text-center text-[30px] mb-[20px] font-mono'>Добро пожаловать!</h1>
                         <Image 
                             src={'/rasplogo.jpg'}
