@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 
 export default function ModalWindow() {
 
-    const [isOpenModal, setIsOpenModal] = useState(true)
+    const [isOpenModal, setIsOpenModal] = useState(false)
 
     useEffect(() => {
-        const isFirstVisit = localStorage.getItem('isFirstVisit');
+        const isFirstVisit = localStorage.getItem('isFirstVisit1');
 
         if(!isFirstVisit){
             setIsOpenModal(true);
-            localStorage.setItem('isFirstVisit', 'no');
+            localStorage.setItem('isFirstVisit1', 'no');
         }
     }, []);
 
