@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function ModalWindow() {
 
-    const [isOpenModal, setIsOpenModal] = useState(false)
+    const [isOpenModal, setIsOpenModal] = useState(true)
 
     useEffect(() => {
         const isFirstVisit = localStorage.getItem('isFirstVisit');
@@ -24,7 +24,7 @@ export default function ModalWindow() {
         <>
             {isOpenModal && (
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50'>
-                    <div className='relative p-5 shadow-2xl z-50 flex flex-col items-center border xs:w-[370px] rounded-lg border-[#6e2fba] backdrop-blur-md'>
+                    <div className='relative p-5 shadow-2xl z-50 flex flex-col items-center border xs:w-[370px] rounded-lg border-[#6e2fba] bg-black'>
                         <Image 
                             src={'/rasplogo.jpg'}
                             width={100}
