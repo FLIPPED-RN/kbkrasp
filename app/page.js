@@ -1,5 +1,6 @@
 'use client'
 
+import HappyOpen from '@/components/HappyOpen';
 import ModalWindow from '@/components/ModalWindow';
 import { useState } from 'react';
 
@@ -74,6 +75,9 @@ export default function Home() {
     <>
       <main className="mx-auto mt-[100px]">
         <ModalWindow />
+        <div>
+          <HappyOpen />
+        </div>
         <div className="relative flex justify-between xs:gap-1 xs:w-[370px] mx-auto sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px]">
           <div>
             <input
