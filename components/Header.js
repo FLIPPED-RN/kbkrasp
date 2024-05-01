@@ -22,7 +22,7 @@ export default function Header() {
             <div className="flex gap-7 items-center">
                 <Link href="/" className="font-mono xs:hidden lg:block">Главная</Link>
                 <Link href="/search-items" className="font-mono xs:hidden lg:block">Пропавшие вещи</Link>
-                <p className="font-mono xs:text-[10px] md:text-[16px] sm:text-[13px]">Версия 2.2 (beta)</p>
+                <p className="font-mono xs:text-[10px] md:text-[16px] sm:text-[13px]">Версия 2.5 (beta)</p>
                 <a href="https://t.me/kbkraspsupport_bot" className="text-2xl px-6 py-2 rounded-lg bg-[#6e2fba] hover:bg-[#000000] hover:text-[#6e2fba] transition-all delay-100 hover:border-[#6e2fba] border border-[#6e2fba] xs:text-[15px] xs:px-2 xs:py-[2px] sm:px-4 sm:py-1 md:text-xl md:py-3 md:px-6">Поддержка</a>
             </div>
         </div>
