@@ -68,8 +68,8 @@ export default function Home() {
 
   const formatDate = (dateString) => {
     const [day, month, year] = dateString.split(".");
-    return new Date(`${year}-${month}-${day}`);
-  };
+    return new Date(year, month - 1, day);
+  };  
 
   return (
     <>
