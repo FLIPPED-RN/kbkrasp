@@ -47,7 +47,7 @@ export default function Home() {
   
 
   const groups = [
-    "23-А-1", "23-ЗМ-1", "23-ИД-1", "23-ИСП-1", "23-Э-1", "23-П-1", "23-ПД-1/1", "23-ПД-1/2", "23-Р-1", "23-СА-1", "23-ЦА-1", "23-ЦД-1", "23-К-2", "23-ЗМ-2", "22-БД-3", "22-ЗМ-3", "22-К-3", "21-ЗМ-4", "23-А-2", "23-ДС-2", "22-А-3", "22-Д-3", "21-А-4", "21-Д-4", "22-Д-4", "23-ИД-2", "23-Р-2", "23-ЦД-2", "22-ИД-3", "22-ЦД-3", "22-Р-3", "21-ИД-4", "21-Р-4", "23-ИСП-2/1", "23-ИСП-2/2", "23-СА-2", "22-ИСП-3/1", "22-СА-3", "21-ИСП-4", "21-СА-4", "23-ГД-2", "23-П-2", "23-ПД-2/1", "23-ПД-2/2", "23-ПД-2/3", "22-ГД-3", "22-П-3", "22-ПД-3/1", "22-ПД-3/2", "22-ПД-3/3", "21-П-4"
+    "23-А-1", "23-ЗМ-1", "23-ИД-1", "23-ИСП-1", "23-Э-1", "23-П-1", "23-ПД-1/1", "23-ПД-1/2", "23-Р-1", "23-СА-1", "23-ЦА-1", "23-ЦД-1", "23-К-2", "23-ЗМ-2", "22-БД-3", "22-ЗМ-3", "22-К-3", "21-ЗМ-4", "23-А-2", "23-ДС-2", "22-А-3", "22-Д-3", "21-А-4", "21-Д-4", "22-Д-4", "23-ИД-2", "23-Р-2", "23-ЦД-2", "22-ИД-3", "22-ЦД-3", "22-Р-3", "21-ИД-4", "21-Р-4", "23-ИСП-2/1", "23-ИСП-2/2", "23-СА-2", "22-ИСП-3/1", "22-СА-3", "21-ИСП-4", "21-СА-4", "23-ГД-2", "23-П-2", "23-ПД-2/1", "23-ПД-2/2", "23-ПД-2/3", "22-ГД-3", "22-П-3", "22-ПД-3/1", "22-ПД-3/2", "22-ПД-3/3", "21-П-4 (мы не пишем для этой группы расписание)"
   ];
 
 
@@ -57,14 +57,17 @@ export default function Home() {
     setVisibleSuggestions(6);
   };
 
-  const filteredGroups = groups.filter(group =>
-    group.toUpperCase().includes(inputValue.toUpperCase())
-  ).slice(0, visibleSuggestions); 
+  const filteredGroups = groups.filter(group => {
+    const regex = new RegExp(inputValue.split('').join('.*'), 'i');
+    return group.match(regex);
+  }).slice(0, visibleSuggestions); 
 
   const handleSelectSuggestion = (value) => {
-    setInputValue(value);
-    setVisibleSuggestions(0);
-    setIsGroupSelected(true)
+    if (value !== "21-П-4 (мы не пишем для этой группы расписание)") {
+      setInputValue(value);
+      setVisibleSuggestions(0);
+      setIsGroupSelected(true);
+    }
   };
 
   const fetchData = async () => {
@@ -80,20 +83,18 @@ export default function Home() {
     const data = await response.json();
   
     if (response.ok) {
-      // Обработка полученных данных
       setGroupData(data);
-      clearTimeout(timeoutId); // Отменяем тайм-аут, если данные загрузились успешно
+      clearTimeout(timeoutId); 
     } else {
-      // Обработка ошибки
       console.error(data.message);
     }
   
-    setIsLoading(false); // Заканчиваем загрузку данных
+    setIsLoading(false); 
   };
 
   const handleSearch = () => {
-    setGroupData(null); // Сбрасываем данные группы перед новым поиском
-    fetchData(); // Выполняем новый поиск
+    setGroupData(null); 
+    fetchData(); 
   };
 
   const increaseVisibleSuggestions = () => {
@@ -128,8 +129,8 @@ export default function Home() {
                       {filteredGroups.map((group, index) => (
                         <div 
                           key={index} 
-                          className="px-4 py-2 cursor-pointer hover:bg-gray-800"
-                          onClick={() => handleSelectSuggestion(group)}
+                          className={`px-4 py-2 cursor-pointer hover:bg-gray-800 ${group === "21-П-4 (мы не пишем для этой группы расписание)" ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          onClick={() => group !== "21-П-4 (мы не пишем для этой группы расписание)" && handleSelectSuggestion(group)}
                         >
                           {group}
                         </div>
