@@ -2,9 +2,43 @@
 
 import HappyOpen from '@/components/HappyOpen';
 import ModalWindow from '@/components/ModalWindow';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://mc.yandex.ru/metrika/tag.js";
+    script.async = true;
+
+    const initScript = document.createElement('script');
+    initScript.innerHTML = `
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(97178842, "init", {
+           clickmap:true,
+           trackLinks:true,
+           accurateTrackBounce:true,
+           webvisor:true
+      });
+    `;
+
+    document.body.appendChild(script);
+    document.body.appendChild(initScript);
+
+    // Очистка при размонтировании
+    return () => {
+      document.body.removeChild(script);
+      document.body.removeChild(initScript);
+    }
+  }, []);
+
+
   const [inputValue, setInputValue] = useState('')
   const [groupData, setGroupData] = useState(null)
   const [visibleSuggestions, setVisibleSuggestions] = useState(6)
