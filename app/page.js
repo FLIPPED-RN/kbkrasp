@@ -76,10 +76,9 @@ export default function Home() {
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
       alert('Упс :( Походу проблема...');
-    }, 15000); // Устанавливаем тайм-аут на 30 секунд
+    }, 15000);
   
-    // Отправка запроса к API
-    const response = await fetch(`https://flipped-rn-rasp-backend-5655.twc1.net/api/search?group=${inputValue}`);
+    const response = await fetch(`https://flipped-rn-rasp-backend-86ce.twc1.net/api/search?group=${inputValue}`);
     const data = await response.json();
   
     if (response.ok) {
