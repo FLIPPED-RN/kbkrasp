@@ -6,13 +6,13 @@ export default function Header() {
         <div className="flex items-center justify-between mx-auto mt-7 border-[#6e2fba] border px-5 rounded-2xl h-[120px] xs:w-[370px] xs:h-[80px] sm:w-[550px] sm:h-[110px] md:w-[750px] lg:w-[950px] lg:h-[150px] lg:px-9 xl:w-[1150px]">
             <div className="flex items-center gap-3">
                 <Image 
-                    src={'/rasplogo-music.jpg'}
+                    src={'/rasplogo-puz.jpg'}
                     width={100}
                     height={100}
                     alt="Логотип расписания"
                     className="xs:w-[70px] xs:h-[70px] sm:w-[100px] sm:h-[100px] lg:w-[130px] lg:h-[130px]"
                 />
-                <h1 className="text-2xl xs:hidden">
+                <h1 className="text-[18px] font-mono xs:hidden lg:block">
                     <span>Расписание </span>
                     <span className="text-[#FFF]">К</span>
                     <span className="text-[#FFF]">Б</span>
