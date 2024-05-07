@@ -6,7 +6,7 @@ export default function Header() {
         <div className="flex items-center justify-between mx-auto mt-7 border-[#6e2fba] border px-5 rounded-2xl h-[120px] xs:w-[370px] xs:h-[80px] sm:w-[550px] sm:h-[110px] md:w-[750px] lg:w-[950px] lg:h-[150px] lg:px-9 xl:w-[1150px]">
             <div className="flex items-center gap-3">
                 <Image 
-                    src={'/rasplogo-puz.jpg'}
+                    src={'/rasplogo-vesn.jpg'}
                     width={100}
                     height={100}
                     alt="Логотип расписания"
