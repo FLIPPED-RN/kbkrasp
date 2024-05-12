@@ -78,8 +78,7 @@ export default function Home() {
       alert('Упс :( Походу проблема...');
     }, 15000);
   
-    // const response = await fetch(`https://flipped-rn-rasp-backend-86ce.twc1.net/api/search?group=${inputValue}`);
-    const response = await fetch(`http://localhost:4200/api/search?group=${inputValue}`);
+    const response = await fetch(`https://flipped-rn-rasp-backend-86ce.twc1.net/api/search?group=${inputValue}`);
     const data = await response.json();
   
     if (response.ok) {
