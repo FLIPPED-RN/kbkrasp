@@ -3,7 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TehnWork from "@/components/TehnWork";
-
+import {Suspense} from "react";
+import {Metrika} from "@/components/metrika";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,9 @@ export default function RootLayout({ children }) {
         <footer>
           <Footer />
         </footer>
+        <Suspense>
+          <Metrika />
+        </Suspense>
       </body>
     </html>
   );

@@ -4,40 +4,8 @@ import HappyOpen from '@/components/HappyOpen';
 import ModalWindow from '@/components/ModalWindow';
 import { useState, useEffect } from 'react';
 
+
 export default function Home() {
-
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://mc.yandex.ru/metrika/tag.js";
-    script.async = true;
-
-    const initScript = document.createElement('script');
-    initScript.innerHTML = `
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-      ym(97178842, "init", {
-           clickmap:true,
-           trackLinks:true,
-           accurateTrackBounce:true,
-           webvisor:true
-      });
-    `;
-
-    document.body.appendChild(script);
-    document.body.appendChild(initScript);
-
-    // Очистка при размонтировании
-    return () => {
-      document.body.removeChild(script);
-      document.body.removeChild(initScript);
-    }
-  }, []);
-
 
   const [inputValue, setInputValue] = useState('')
   const [groupData, setGroupData] = useState(null)
@@ -50,17 +18,15 @@ export default function Home() {
     "23-А-1", "23-ЗМ-1", "23-ИД-1", "23-ИСП-1", "23-Э-1", "23-П-1", "23-ПД-1/1", "23-ПД-1/2", "23-Р-1", "23-СА-1", "23-ЦА-1", "23-ЦД-1", "23-К-2", "23-ЗМ-2", "22-БД-3", "22-ЗМ-3", "22-К-3", "21-ЗМ-4", "23-А-2", "23-ДС-2", "22-А-3", "22-Д-3", "21-А-4", "21-Д-4", "22-Д-4", "23-ИД-2", "23-Р-2", "23-ЦД-2", "22-ИД-3", "22-ЦД-3", "22-Р-3", "21-ИД-4", "21-Р-4", "23-ИСП-2/1", "23-ИСП-2/2", "23-СА-2", "22-ИСП-3/1", "22-СА-3", "21-ИСП-4", "21-СА-4", "23-ГД-2", "23-П-2", "23-ПД-2/1", "23-ПД-2/2", "23-ПД-2/3", "22-ГД-3", "22-П-3", "22-ПД-3/1", "22-ПД-3/2", "22-ПД-3/3", "21-П-4 (мы не пишем для этой группы расписание)"
   ];
 
-
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+    setInputValue(event.target.value.replace(/[-/]/g, ''));
     setIsGroupSelected(false);
     setVisibleSuggestions(6);
   };
 
   const filteredGroups = groups.filter(group => {
-    const regex = new RegExp(inputValue.split('').join('.*'), 'i');
-    return group.match(regex);
-  }).slice(0, visibleSuggestions); 
+    return group.replace(/[-/]/g, '').toLowerCase().includes(inputValue.toLowerCase());
+  }).slice(0, visibleSuggestions);
 
   const handleSelectSuggestion = (value) => {
     if (value !== "21-П-4 (мы не пишем для этой группы расписание)") {
@@ -115,7 +81,7 @@ export default function Home() {
         <div className="relative flex justify-between xs:gap-1 xs:w-[370px] mx-auto sm:w-[550px] md:w-[750px] lg:w-[950px] xl:w-[1150px]">
           <div>
             <input
-              type="text" 
+              type="text"
               value={inputValue}
               onChange={handleInputChange}
               className="border h-[60px] bg-black text-white border-[#6e2fba] rounded-lg px-4 text-xl xs:w-[300px] xs:text-[15px] sm:w-[430px] md:w-[580px] md:text-[18px] lg:w-[750px] xl:w-[900px]"
@@ -126,8 +92,8 @@ export default function Home() {
                   {filteredGroups.length > 0 ? (
                     <>
                       {filteredGroups.map((group, index) => (
-                        <div 
-                          key={index} 
+                        <div
+                          key={index}
                           className={`px-4 py-2 cursor-pointer hover:bg-gray-800 ${group === "21-П-4 (мы не пишем для этой группы расписание)" ? 'opacity-50 cursor-not-allowed' : ''}`}
                           onClick={() => group !== "21-П-4 (мы не пишем для этой группы расписание)" && handleSelectSuggestion(group)}
                         >
