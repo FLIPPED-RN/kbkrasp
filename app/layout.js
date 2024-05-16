@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import TehnWork from "@/components/TehnWork";
 import {Suspense} from "react";
 import {Metrika} from "@/components/metrika";
+import BackgroundBest from "@/components/BackgroundBest";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {/* <TehnWork /> */}
+        <BackgroundBest />
         <header>
           <Header />
         </header>
@@ -30,6 +32,7 @@ export default function RootLayout({ children }) {
         <Suspense>
           <Metrika />
         </Suspense>
+
       </body>
     </html>
   );

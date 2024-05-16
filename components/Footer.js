@@ -27,7 +27,7 @@ function Footer({ initialShuffledString }) {
 
     return (
         <>
-            <div className="flex items-center justify-center w-[1100px] mx-auto border-[#6e2fba] border px-5 rounded-2xl h-[120px] mt-[100px] mb-10 xs:w-[370px] xs:h-[80px] sm:w-[550px] sm:h-[110px] md:w-[750px] lg:w-[950px] lg:h-[150px] xl:w-[1150px]">
+            <div className="flex items-center justify-center w-[1100px] mx-auto border-[#ffffff] border px-5 rounded-2xl h-[120px] mt-[100px] mb-10 xs:w-[370px] xs:h-[80px] sm:w-[550px] sm:h-[110px] md:w-[750px] lg:w-[950px] lg:h-[150px] xl:w-[1150px]">
                 <div className='text-center'>
                     <p className="font-mono xs:text-[12px] md:text-xl">powered by {shuffledString}</p>
                     <p className='mt-2 font-mono xs:text-[12px] md:text-xl'>2024</p>
